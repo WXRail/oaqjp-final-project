@@ -30,8 +30,13 @@ def sent_analyzer():
         if key == "dominant_emotion":
             result = result + f" The dominant emotion is {value}."
         else:
-            result = result + f"'{key}': {value}"
-    #
+            result = result + f"'{key}': {value}, "
+    # Now swap out the last emotion statement to correct the grammar.
+    index = result.rfind(",")
+    result_a = result[0:index]
+    result_b = result[index + 1:len(result)]
+    result_b = " and "
+    result = result_a + result_b
     # 'anger': {response['anger']}, 'disgust': 0.0025598293, 'fear': 0.009251528, 'joy': 0.9680386 and 'sadness': 0.049744144. The dominant emotion is joy.
     # label = response['label']
     # score = response['score']
