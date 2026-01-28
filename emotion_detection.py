@@ -16,10 +16,9 @@ def emotion_detector(text_to_analyze: str) -> str:
     """
     # Set the target URL for the Watson NL Library
     url = """
-    https://sn-watson-emotion.labs.skills.network/vl/watson.runtime.nlp.v1/NlpService/EmotionPredict
-    """
+    https://sn-watson-emotion.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/EmotionPredict"""
     # Set the headers required for the API request
-    header = {"grpc-metadata-mm-model-id": "emotion_aggregated_lang_en_stock"}
+    header = {"grpc-metadata-mm-model-id": "emotion_aggregated-workflow_lang_en_stock"}
     # Create a dictionary with the text to be analyzed
     myobj = {"raw_document": {"text": text_to_analyze}}
     # Send a POST request to the API with the text and headers.  Set the timeout to 10 seconds
