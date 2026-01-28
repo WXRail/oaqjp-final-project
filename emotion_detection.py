@@ -1,8 +1,8 @@
 """
 Module to process emotion requests via the Watson NLP library
 """
-import requests  # Import the requests library to handle HTTP requests
 import json      # Import the json library to handle parsing HTTP responses
+import requests  # Import the requests library to handle HTTP requests
 
 
 def emotion_detector(text_to_analyze: str) -> str:
@@ -15,13 +15,15 @@ def emotion_detector(text_to_analyze: str) -> str:
     :rtype: str
     """
     # Set the target URL for the Watson NL Library
-    url = "https://sn-watson-emotion.labs.skills.network/vl/watson.runtime.nlp.v1/NlpService/EmotionPredict"
+    url = """
+    https://sn-watson-emotion.labs.skills.network/vl/watson.runtime.nlp.v1/NlpService/EmotionPredict
+    """
     # Set the headers required for the API request
     header = {"grpc-metadata-mm-model-id": "emotion_aggregated_lang_en_stock"}
     # Create a dictionary with the text to be analyzed
     myobj = {"raw_document": {"text": text_to_analyze}}
-    # Send a POST request to the API with the text and headers
-    response = requests.post(url, json=myobj, headers=header)
+    # Send a POST request to the API with the text and headers.  Set the timeout to 10 seconds
+    response = requests.post(url, json=myobj, headers=header, timeout=10)
     # Initialise the result variable to ensure the scope is at the right level
     formatted_response = None
     # If the response status code is 200, process the response text
