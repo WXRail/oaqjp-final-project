@@ -24,7 +24,15 @@ def sent_analyzer():
     # Pass the text to the emotion_detector function and store the response
     response = emotion_detector(text_to_analyze)
 
-    # Extract the label and score from the response
+    # Extract the emotions and scores from the response
+    result = "For the given statement, the system response is "
+    for key, value in response.items():
+        if key == "dominant_emotion":
+            result = result + f" The dominant emotion is {value}."
+        else:
+            result = result + f"'{key}': {value}"
+    #
+    # 'anger': {response['anger']}, 'disgust': 0.0025598293, 'fear': 0.009251528, 'joy': 0.9680386 and 'sadness': 0.049744144. The dominant emotion is joy.
     # label = response['label']
     # score = response['score']
 
