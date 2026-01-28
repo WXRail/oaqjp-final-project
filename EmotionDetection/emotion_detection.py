@@ -47,8 +47,13 @@ def emotion_detector(text_to_analyze: str) -> dict:
                 dominant_emotion_value = emotion_value
         # Log the dominant emotion we found into the results dictionary
         result['dominant_emotion'] = dominant_emotion
-    # If the response status code is 500, set the result to None
-    elif response.status_code == 500:
-        result = None
+    # If the response status code is 400, set the scores to None
+    elif response.status_code == 400:
+        result['anger'] = None
+        result['disgust'] = None
+        result['fear'] = None
+        result['joy'] = None
+        result['sadness'] = None
+        result['dominant_emotion'] = None
     # Now return the formatted result
     return result
