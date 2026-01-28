@@ -33,13 +33,17 @@ def sent_analyzer():
             result = result + f"'{key}': {value}, "
     # Now swap out the last emotion statement to correct the grammar.
     pattern = ","
-    index = result.rfind(pattern, 0, result.rfind(pattern))
+    index = result.rfind(pattern)
+    print(f"Index: {index}")
+    result = result[0:index] + "." + result[index+1: len(result)]
+    print(f"Index: {result}")
+    index = result.rfind(pattern)
     print(f"Index: {index}")
     result_a = result[0:index]
     print(f"result_a: {result_a}")
     result_b = result[index + 1:len(result)]
     print(f"result_b: {result_b}")
-    result_b = " and " + result_b
+    result_b = " and" + result_b
     print(f"result_b: {result_b}")
     result = result_a + result_b
     print(f"result_: {result}")
