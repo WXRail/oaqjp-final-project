@@ -31,33 +31,22 @@ def sent_analyzer():
             result = result + f" The dominant emotion is {value}."
         else:
             result = result + f"'{key}': {value}, "
-    # Now swap out the last emotion statement to correct the grammar.
+    # Now correct the grammar.
+    # FInd the last comma in the string
     pattern = ","
     index = result.rfind(pattern)
-    print(f"Index: {index}")
+    # Swap that out for a full stop
     result = result[0:index] + "." + result[index+1: len(result)]
-    print(f"Index: {result}")
+    # Now get the previous comma
     index = result.rfind(pattern)
-    print(f"Index: {index}")
+    # Swap that out for an 'and' and rebuild the rearmost part of the string
     result_a = result[0:index]
-    print(f"result_a: {result_a}")
     result_b = result[index + 1:len(result)]
-    print(f"result_b: {result_b}")
     result_b = " and" + result_b
-    print(f"result_b: {result_b}")
+    # Construct the result
     result = result_a + result_b
-    print(f"result_: {result}")
-    # 'anger': {response['anger']}, 'disgust': 0.0025598293, 'fear': 0.009251528, 'joy': 0.9680386 and 'sadness': 0.049744144. The dominant emotion is joy.
-    # label = response['label']
-    # score = response['score']
-
-    # Check if the label is None, indicating an error or invalid input
-    if response is None:
-        return "Invalid input! Try again."
-    else:
-        # Return a formatted string with the sentiment label and score
-        return f"{result}"
-
+    # Return a formatted string with the emotion labels and score
+    return result
 
 @app.route("/")
 def render_index_page():
