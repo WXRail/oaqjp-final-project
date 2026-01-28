@@ -34,10 +34,15 @@ def sent_analyzer():
     # Now swap out the last emotion statement to correct the grammar.
     pattern = ","
     index = result.rfind(pattern, 0, result.rfind(pattern))
+    print(f"Index: {index}")
     result_a = result[0:index]
+    print(f"result_a: {result_a}")
     result_b = result[index + 1:len(result)]
+    print(f"result_b: {result_b}")
     result_b = " and " + result_b
+    print(f"result_b: {result_b}")
     result = result_a + result_b
+    print(f"result_: {result}")
     # 'anger': {response['anger']}, 'disgust': 0.0025598293, 'fear': 0.009251528, 'joy': 0.9680386 and 'sadness': 0.049744144. The dominant emotion is joy.
     # label = response['label']
     # score = response['score']
