@@ -31,7 +31,7 @@ def emotion_detector(text_to_analyze: str) -> dict:
         # Parse the response from the API
         formatted_response = json.loads(response.text)
         # Pull the emotions dictionary from the emotion predictions list (index 0)
-        emotions_dict = formatted_response['emotionsPredictions'][0]['emotion']
+        emotions_dict = formatted_response['emotionPredictions'][0]['emotion']
         # Dominant emotion and value placeholders which we will update in the for loop
         # and then reference them in the function return result.
         dominant_emotion = ""
