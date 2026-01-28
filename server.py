@@ -41,7 +41,7 @@ def sent_analyzer():
         return "Invalid input! Try again."
     else:
         # Return a formatted string with the sentiment label and score
-        return f"{response}"
+        return f"{result}"
 
 
 @app.route("/")
